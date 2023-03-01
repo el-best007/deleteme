@@ -1,0 +1,45 @@
+mansi@expedent.com
+
+tstout@skillstorm.com
+https://www.verizon.com/about/work/search/technology/jobs?search_type=talemetry&sort_by=cfml10,desc
+https://www.verizon.com/about/careers/military?bid=11143&CMP=OOH_CON_OTH_22222_NA_20200529_NA_NM20200156_00001
+https://www.verizon.com/about/work/jobs/11598786-senior-solutions-sales-specialist-5g-mec-transformation?hl=cloud
+https://events.hiringourheroes.org/c/calendar/a7a5b351-8807-4343-8561-c757c022600f
+https://jobs.disneycareers.com/job/san-francisco/lucasfilm-information-systems-engineer-intern-summer-2023/391/45003189152
+
+
+You are applying to Network Operations Engineer (617016)
+
+AWS Access Key:
+=================
+Secret Key - /J/hmwE1ONocEluPuaFzg9f0dVScDp8xrLnomVEw
+Access key - AKIATXZJXCKWVIGVJR7V
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+
+FROM jenkins/jenkins:latest
+#log in as root user
+USER root
+#update and install requirements
+RUN apt update && apt-get install zip -y && apt-get install curl -y && apt-get install ca-certificates
+#install aws cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
+RUN ./aws/install
+#install kubectl
+RUN curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
+RUN apt-get update
+RUN apt-get install -y kubectl
+#install eksctl
+RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+RUN mv /tmp/eksctl /usr/local/bin
+#install docker cli
+RUN curl -sSL https://get.docker.com/ | sh
+# set user Jenkins
+USER jenkins
+
+
+
+
+https://kubernetes.io/docs/tasks/administer-cluster/namespaces-walkthrough/
